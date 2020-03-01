@@ -52,18 +52,19 @@ class ProductAdd extends Component {
     console.log("test message121212")
     e.preventDefault();
     const form = document.forms.productAdd;
+    console.log(form.Price.value);
     const product = {
-      Product_id: '0',
+      Product_id: 0,
       Product_name: form.Product_name.value,
       Category: form.Category.value,
-      Price: form.Price.value,
+      Price: form.Price.valueAsNumber,
       Image: form.Image.value,
     }
     const temp = product.Image;
     this.props.createProduct(product);
     form.Product_name.value = "";
-    form.Category.value = "";
-    form.Price.value = "";
+    form.Category.value = "Shirts";
+    form.Price.value = 0;
     form.Image.value = "";
   }
   render() {
@@ -78,7 +79,7 @@ class ProductAdd extends Component {
             <option value="Sweaters">Sweaters</option>
             <option value="Accessories">Accessories</option>
           </select>
-          <div className="dollar"> <input type="text" name="Price" placeholder="Price" /></div>
+          <div className="dollar"> <input type="number" name="Price" placeholder="Price" /></div>
           <input type="text" name="Image" placeholder="Image" />
           <button>Add Product</button>
         </form>
@@ -137,6 +138,8 @@ export default class ProductList extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query, variables:{product}})
     });
+    const result = await response.json();
+    console.log(result);
     this.loadData();
   }
 

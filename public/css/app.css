@@ -61,6 +61,14 @@ input[type=text] {
 .main{
   width:68%;
 }
+input[type=number] {
+  width: 100%;
+  padding: 5px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: lightpink;
+  color: white;
+}
 
 .dollar{
 	display:inline-block;

@@ -6,7 +6,7 @@ enum Category_enum{
     Sweaters
     Accessories
 }
-type Product{
+type product{
     Product_id:Int
     Product_name:String!
     Category:Category_enum!
@@ -23,9 +23,9 @@ input ProductInputs{
 
 type Query{
     about:String!
-    ProductList:[Product!]!
+    ProductList:[product!]!
     }
 type Mutation{
     setAboutMessage(message : String!):String
-    ProductAdd(product: ProductInputs!):Product!
+    ProductAdd(product: ProductInputs!):product!
 }
